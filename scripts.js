@@ -14,8 +14,6 @@ const Gameboard = function () {
            console.log(x.join(' '))
 
         });
-
-        return gameboard;
     };
 
     const updateGameBoard = (row, column, player) =>{
@@ -25,18 +23,37 @@ const Gameboard = function () {
 
         if (gameboard[row][column] === 'x' || gameboard[row][column] === 'o') {
             console.log("That Spot is already taken. Please Try again.");
-            return;
+            updateGameBoard(player.getPlayerRowChoice(), player.getPlayerColChoice(), player);
         } else { 
             gameboard[row][column] = player.getPlayerSymbol();
         }
     
     };
 
-    const checkWinner = () => {
+    const checkWinner = (player) => {
         let gameOver = false;
 
-        if(gameboard[0][0] === gameboard[1][0] && gameboard[1][0] === gameboard[2][0]){
-            console.log("WINNER! GAME OVER");
+        console.log("inside the checkWinner function. Player symbol is " + player.getPlayerSymbol())
+
+        if( 
+            //left vertical
+            (gameboard[0][0] === gameboard[1][0] && gameboard[1][0] === gameboard[2][0] && gameboard[0][0] === player.getPlayerSymbol()) ||
+            //center vertical
+            (gameboard[0][1] === gameboard[1][1] && gameboard[1][1] === gameboard[2][1] && gameboard[0][1] === player.getPlayerSymbol()) ||
+            //right vertical
+            (gameboard[0][2] === gameboard[1][2] && gameboard[1][2] === gameboard[2][2] && gameboard[0][2] === player.getPlayerSymbol()) ||
+            //diagonal left to right
+            (gameboard[0][0] === gameboard[1][1] && gameboard[1][1] === gameboard[2][2] && gameboard[0][0] === player.getPlayerSymbol()) ||
+            //diagonal right to left
+            (gameboard[0][2] === gameboard[1][1] && gameboard[1][1] === gameboard[2][0] && gameboard[0][2] === player.getPlayerSymbol()) ||
+            //top horizontal
+            (gameboard[0][0] === gameboard[0][1] && gameboard[0][1] === gameboard[0][2] && gameboard[0][0] === player.getPlayerSymbol()) ||
+            //middle horizontal
+            (gameboard[1][0] === gameboard[1][1] && gameboard[1][1] === gameboard[1][2] && gameboard[1][0] === player.getPlayerSymbol()) ||
+            //bottom horizontal
+            (gameboard[2][0] === gameboard[2][1] && gameboard[2][1] === gameboard[2][2] && gameboard[2][0] === player.getPlayerSymbol())
+        ){
+            console.log(player.getPlayer() + " is the Winner! GAME OVER!");
             return gameOver = true;
         } else {
             return gameOver;
@@ -61,7 +78,7 @@ const player = function () {
         playerName = name;
         const symbol = prompt(`Hi ${name}, do you want to be X's or O's?`);
         setPlayerSymbol(symbol);
-        
+        console.log("inside the createPlayer function. Player symbol is " + getPlayerSymbol())
     }
 
     const getPlayerRowChoice = () =>{
@@ -100,7 +117,8 @@ const gameController = function (){
 
 const startGame = () => {
     let gameboard = Gameboard();
-    
+    let endGame = false;
+
     //ask for player name
     let playerOne = player();
     playerOne.createPlayer("Jim");
@@ -109,16 +127,22 @@ const startGame = () => {
     playerTwo.createPlayer("Ashley");
 
     //start game
-    while (!gameboard.checkWinner()){
+    while (!endGame){
         console.log("----- || Player One's Turn  || -----");
         gameboard.updateGameBoard(playerOne.getPlayerRowChoice(), playerOne.getPlayerColChoice(), playerOne);
-        console.log(gameboard.getGameboard());
-        gameboard.checkWinner();
+        gameboard.getGameboard();
+        if(gameboard.checkWinner(playerOne)){
+            endGame = true;
+            return;
+        };
 
         console.log("----- || Player Two's Turn  || -----");
         gameboard.updateGameBoard(playerTwo.getPlayerRowChoice(), playerTwo.getPlayerColChoice(), playerTwo);
-        console.log(gameboard.getGameboard());
-        gameboard.checkWinner();
+        gameboard.getGameboard();
+        if(gameboard.checkWinner(playerTwo)){
+            endGame = true;
+            return;
+        };
     }
 
 }
@@ -129,5 +153,5 @@ return {startGame}
 
 const game = gameController();
 game.startGame();
-
+console.log("end of program")
 
