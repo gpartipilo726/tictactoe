@@ -14,31 +14,43 @@
         </div>
         <div class="main-content">
             <div class="players">
-                <div class="player-name">
-                    <label for="playerOne">Player One:</label>
-                    <input id="playerOne" name="playerTwo" type="text" placeholder="Enter Your Name">
-                </div>
-               <div class="player-name">
-                    <label for="playerTwo">Player Two:</label>
-                    <input id="playerTwo" name="playerTwo" type="text" placeholder="Enter your Name">
-               </div>
-               <button>Start Game</button>
+                <form action="/" class="players">
+                    <div class="player-name">
+                        <label for="playerOne">Player One:</label>
+                        <input id="playerOne" name="playerTwo" type="text" placeholder="Enter Your Name">
+                        <select id="playerOneSymbol" class="playerSymbol" name="playerOneSymbol" type="select" placeholder="Enter Your Name">
+                            <option value="" disabled selected hidden>Select Symbol...</option>
+                            <option value="X">X</option>
+                            <option value="O">O</option>
+                        </select>
+                    </div>
+                   <div class="player-name">
+                        <label for="playerTwo">Player Two:</label>
+                        <input id="playerTwo" name="playerTwo" type="text" placeholder="Enter your Name">
+                        <select id="playerOneSymbol" class="playerSymbol" name="playerOneSymbol" type="select" placeholder="Enter Your Name">
+                            <option value="" disabled selected hidden>Select Symbol...</option>
+                            <option value="X">X</option>
+                            <option value="O">O</option>
+                        </select>
+                    </div>
+                </form>
+               <button id="startgame" type="submit">Start Game</button>
             </div>
             <div class="gameboard">
-                <div>q</div>
-                <div>w</div>
-                <div>w</div>
-                <div>w</div>
-                <div>w</div>
-                <div>w</div>
-                <div>w</div>
-                <div>w</div>
-                <div>w</div>
+                <div class="grid-body" gridrow = '1' gridcol="1">X</div>
+                <div class="grid-body" gridrow = '1' gridcol="2"></div>
+                <div class="grid-body" gridrow = '1' gridcol="3"></div>
+                <div class="grid-body" gridrow = '2' gridcol="1"></div>
+                <div class="grid-body" gridrow = '2' gridcol="2"></div>
+                <div class="grid-body" gridrow = '2' gridcol="3"></div>
+                <div class="grid-body" gridrow = '3' gridcol="1"></div>
+                <div class="grid-body" gridrow = '3' gridcol="2"></div>
+                <div class="grid-body" gridrow = '3' gridcol="3"></div>
             </div>
         </div>
         
     </div>
     
-    <script src="script.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
