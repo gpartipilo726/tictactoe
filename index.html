@@ -18,7 +18,7 @@
                     <div class="player-name">
                         <label for="playerOne">Player One:</label>
                         <input id="playerOne" name="playerTwo" type="text" placeholder="Enter Your Name">
-                        <select id="playerOneSymbol" class="playerSymbol" name="playerOneSymbol" type="select" placeholder="Enter Your Name">
+                        <select id="playerOneSymbol" class="playerSymbol" name="playerOneSymbol" onchange="game.updateDropdown()" type="select" placeholder="Enter Your Name">
                             <option value="" disabled selected hidden>Select Symbol...</option>
                             <option value="X">X</option>
                             <option value="O">O</option>
@@ -27,7 +27,7 @@
                    <div class="player-name">
                         <label for="playerTwo">Player Two:</label>
                         <input id="playerTwo" name="playerTwo" type="text" placeholder="Enter your Name">
-                        <select id="playerOneSymbol" class="playerSymbol" name="playerOneSymbol" type="select" placeholder="Enter Your Name">
+                        <select id="playerTwoSymbol" class="playerSymbol" name="playerTwoSymbol" onchange="game.updateDropdown()" type="select" placeholder="Enter Your Name">
                             <option value="" disabled selected hidden>Select Symbol...</option>
                             <option value="X">X</option>
                             <option value="O">O</option>
@@ -36,17 +36,21 @@
                 </form>
                <button id="startgame" type="submit">Start Game</button>
             </div>
-            <div class="gameboard">
-                <div class="grid-body" gridrow = '1' gridcol="1">X</div>
-                <div class="grid-body" gridrow = '1' gridcol="2"></div>
-                <div class="grid-body" gridrow = '1' gridcol="3"></div>
-                <div class="grid-body" gridrow = '2' gridcol="1"></div>
-                <div class="grid-body" gridrow = '2' gridcol="2"></div>
-                <div class="grid-body" gridrow = '2' gridcol="3"></div>
-                <div class="grid-body" gridrow = '3' gridcol="1"></div>
-                <div class="grid-body" gridrow = '3' gridcol="2"></div>
-                <div class="grid-body" gridrow = '3' gridcol="3"></div>
+            <div>
+                <h2 id="message"></h2>
+                <div class="gameboard">
+                    <div class="grid-body" gridrow = '0' gridcol="0">X</div>
+                    <div class="grid-body" gridrow = '0' gridcol="1">O</div>
+                    <div class="grid-body" gridrow = '0' gridcol="2"></div>
+                    <div class="grid-body" gridrow = '1' gridcol="0"></div>
+                    <div class="grid-body" gridrow = '1' gridcol="1"></div>
+                    <div class="grid-body" gridrow = '1' gridcol="2"></div>
+                    <div class="grid-body" gridrow = '2' gridcol="0"></div>
+                    <div class="grid-body" gridrow = '2' gridcol="1"></div>
+                    <div class="grid-body" gridrow = '2' gridcol="2"></div>
+                </div>
             </div>
+            
         </div>
         
     </div>

@@ -57,6 +57,12 @@ h2{
     left: 120px;
 }   
 
+.header h1, .header h2{
+    letter-spacing: .4rem;
+
+}
+
+
 .container{
     display: flex;
     justify-content: center;
@@ -65,13 +71,7 @@ h2{
     gap: 3.5rem;
 }
 
-.gameboard{
-    border: 4px solid black;
-    border-radius:  1.2rem;
-    display: grid;
-    grid: 12.5rem 12.5rem 12.5rem / 12.5rem 12.5rem 12.5rem ;
-    width: auto;
-}
+
 
 .main-content{
 display: flex;
@@ -91,12 +91,14 @@ display: flex;
     padding-right: 1.8rem;
 }
 
-input{
+input, .playerSymbol {
     font-family: var(--mainfont);
     padding-left: 12px;
     height: 2.3rem;
     border-radius: .4rem;
     font-size: 1.2rem;
+    letter-spacing: .1rem;
+
 
 }
 
@@ -114,22 +116,42 @@ button {
 
 }
 
-.grid-body{
-    border: 2px solid black;
-    
+#message{
+    padding: .8rem;
+    letter-spacing: .2rem;
 }
 
+.gameboard{
+    border: 4px solid black;
+    border-radius:  1.2rem;
+    display: grid;
+    grid: 12.5rem 12.5rem 12.5rem / 12.5rem 12.5rem 12.5rem ;
+    width: auto;
+}
+
+.grid-body{
+    align-items: center;
+    text-align: center;
+    border: 4px solid black;
+    font-size: 8.5rem;
+    font-family: var(--mainfont);
+    padding-top: 2rem;
+
+}
+
+
+
 .gameboard .grid-body:nth-of-type(1){
-    border-top-left-radius: .4rem;
+    border-top-left-radius: .9rem;
 }
 
 .gameboard .grid-body:nth-of-type(3){
-    border-top-right-radius: .4rem;
+    border-top-right-radius: .9rem;
 }
 
 .gameboard .grid-body:nth-of-type(7){
-    border-bottom-left-radius: .4rem;
+    border-bottom-left-radius: .9rem;
 }
 .gameboard .grid-body:nth-of-type(9){
-    border-bottom-right-radius: .4rem;
+    border-bottom-right-radius: .9rem;
 }
